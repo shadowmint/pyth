@@ -611,7 +611,10 @@ class Group(object):
 
 
     def handle_up(self, amount):
-        self.content.append(ReadableMarker("super", True))
+        if amount == '0':
+            self.content.append(ReadableMarker("super", False))
+        else:
+            self.content.append(ReadableMarker("super", True))
 
     def handle_super(self):
         self.content.append(ReadableMarker("super", True))
@@ -622,7 +625,10 @@ class Group(object):
         self.content.append(ReadableMarker("super", False))
 
     def handle_dn(self, amount):
-        self.content.append(ReadableMarker("sub", True))
+        if amount == '0':
+            self.content.append(ReadableMarker("sub", False))
+        else:
+            self.content.append(ReadableMarker("sub", True))
 
     def handle_sub(self):
         self.content.append(ReadableMarker("sub", True))
